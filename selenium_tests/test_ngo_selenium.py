@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-BASE_URL        = "http://localhost:3000"
+BASE_URL        = "https://rescuebite-sc83.vercel.app"
 NGO_EMAIL       = "ngo@test.com"
 NGO_PASSWORD    = "Testpass@123"
 

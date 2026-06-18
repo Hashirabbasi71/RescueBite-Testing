@@ -5,7 +5,7 @@ Covers: /ngo (discover), /ngo/claims
 
 from playwright.sync_api import Page
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://rescuebite-sc83.vercel.app"
 
 
 class NgoDiscoverPage:

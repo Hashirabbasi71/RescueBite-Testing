@@ -7,7 +7,7 @@
 **Prepared By:** Muhammad Hashir  
 **Date:** 19 June 2026  
 **Testing Framework:** Playwright (Pytest) + Selenium WebDriver  
-**Application URL:** http://localhost:3000  
+**Application URL:** https://rescuebite-sc83.vercel.app  
 **Total Tests Executed:** 89  
 **Overall Pass Rate:** 87.64% (78 Passed / 11 Failed)
 
@@ -56,7 +56,7 @@ Test data for data-driven suites was stored in structured XML files under `test_
 | Browser (Playwright) | Chromium (launched headless=False, slow_mo=100 ms) |
 | Browser (Selenium) | Google Chrome (latest, via ChromeDriverManager) |
 | Application Stack | Next.js 14, Supabase (Auth + PostgreSQL) |
-| Application URL | http://localhost:3000 |
+| Application URL | https://rescuebite-sc83.vercel.app |
 | Test Execution Date | 19 June 2026 |
 | Working Directory | D:\Web Engineering\V2\rescuebite\RescueBite_Testing_Project |
 
@@ -170,10 +170,10 @@ RescueBite_Testing_Project/
 
 | Test ID | XML ID | Description | Input | Expected Output | Actual Output | Status |
 |---|---|---|---|---|---|---|
-| TC-LGN-P-001 | LGN-001 | Valid restaurant credentials redirect to /dashboard | Email: restaurant@test.com, Password: Testpass@123 | URL changes away from /login | URL remains http://localhost:3000/login | **FAIL** |
-| TC-LGN-P-002 | LGN-002 | Valid NGO credentials redirect to /ngo | Email: ngo@test.com, Password: Testpass@123 | URL changes away from /login | URL remains http://localhost:3000/login | **FAIL** |
+| TC-LGN-P-001 | LGN-001 | Valid restaurant credentials redirect to /dashboard | Email: restaurant@test.com, Password: Testpass@123 | URL changes away from /login | URL remains https://rescuebite-sc83.vercel.app/login | **FAIL** |
+| TC-LGN-P-002 | LGN-002 | Valid NGO credentials redirect to /ngo | Email: ngo@test.com, Password: Testpass@123 | URL changes away from /login | URL remains https://rescuebite-sc83.vercel.app/login | **FAIL** |
 
-> **Failure Reason:** `wait_for_url("http://localhost:3000/**")` glob pattern matches the current page URL (/login) immediately, so the assertion runs before the redirect completes.
+> **Failure Reason:** `wait_for_url("https://rescuebite-sc83.vercel.app/**")` glob pattern matches the current page URL (/login) immediately, so the assertion runs before the redirect completes.
 
 ### 6.2 Negative Test Cases
 
@@ -356,7 +356,7 @@ RescueBite_Testing_Project/
 | TC-DON-S-003 | Quantity input has min=1 and max=999 | Check min/max attributes | `min` = "1", `max` = "999" | Both confirmed | **PASS** |
 | TC-DON-S-004 | Photo upload area is visible | Find upload text element | "Click to upload a photo" text visible | Visible | **PASS** |
 | TC-DON-S-005 | Empty title prevents form submission | Click submit with blank title | URL stays /dashboard/new | URL unchanged | **PASS** |
-| TC-DON-S-006 | Pickup end before start shows error | Set start=10:00, end=08:00; click submit | Error element (`p.text-sm.text-clay`) visible OR URL stays /dashboard/new | 0 error elements found; URL = http://localhost:3000/dashboard | **FAIL** |
+| TC-DON-S-006 | Pickup end before start shows error | Set start=10:00, end=08:00; click submit | Error element (`p.text-sm.text-clay`) visible OR URL stays /dashboard/new | 0 error elements found; URL = https://rescuebite-sc83.vercel.app/dashboard | **FAIL** |
 | TC-DON-S-007 | Selecting Bakery category reflects in select | `select_by_value("BAKERY")` | Selected option value = "BAKERY" | Value confirmed | **PASS** |
 | TC-DON-S-008 | Description textarea does not have required attribute | Check `required` attribute on `<textarea>` | `required` = None | None confirmed | **PASS** |
 | TC-DON-S-009 | Submit button text is "Post donation" | Check button text content | "Post donation" in text | Confirmed | **PASS** |
@@ -377,7 +377,7 @@ RescueBite_Testing_Project/
 | TC-NGO-S-001 | NGO discover page loads and shows heading | Navigate to /ngo | `<h1>` element visible with non-empty text | Heading found and displayed | **PASS** |
 | TC-NGO-S-002 | At least 3 stat cards visible on discover page | Count `.stat-card` elements | `len(stat_cards) >= 3` | 3+ stat cards found | **PASS** |
 | TC-NGO-S-003 | Base location indicator is shown | Find text "Base:" on page | Element containing "Base:" is displayed | Element found and visible | **PASS** |
-| TC-NGO-S-004 | Accessing /ngo without auth redirects to /login | Open a new tab via `window.open()`, navigate to /ngo | URL contains /login or /pending | URL = http://localhost:3000/ngo — no redirect | **FAIL** |
+| TC-NGO-S-004 | Accessing /ngo without auth redirects to /login | Open a new tab via `window.open()`, navigate to /ngo | URL contains /login or /pending | URL = https://rescuebite-sc83.vercel.app/ngo — no redirect | **FAIL** |
 
 > **TC-NGO-S-004 Failure Reason:** A new tab opened with `driver.execute_script("window.open('about:blank', '_blank');")` within the same Selenium browser window **shares the existing browser session cookies**. The NGO user was still authenticated in the new tab, so no redirect to /login occurred. To properly test unauthenticated access, a separate `webdriver.Chrome()` instance (or a private/incognito window with no shared cookies) is required.
 
@@ -434,7 +434,7 @@ RescueBite_Testing_Project/
 self.page.wait_for_url(f"{BASE_URL}/**", timeout=10000)
 assert "/login" not in self.login_page.get_current_url()
 ```
-The glob pattern `http://localhost:3000/**` already matches the current page at `/login`, so `wait_for_url` returns immediately. The redirect has not yet occurred when the assertion is evaluated.
+The glob pattern `https://rescuebite-sc83.vercel.app/**` already matches the current page at `/login`, so `wait_for_url` returns immediately. The redirect has not yet occurred when the assertion is evaluated.
 
 For `test_negative_login`, no wait is used at all before `is_error_visible()`:
 ```python

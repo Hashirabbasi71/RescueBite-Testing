@@ -8,7 +8,7 @@ from playwright.sync_api import Page, expect
 from pages.register_page import RegisterPage
 from utils.xml_parser import xml_parser
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://rescuebite-sc83.vercel.app"
 
 
 class TestRegistrationModule:

@@ -28,7 +28,7 @@ playwright install chromium
 
 ## 3. Start the RescueBite App
 
-The tests expect the app running at `http://localhost:3000`.  
+The tests expect the app running at `https://rescuebite-sc83.vercel.app`.  
 Open a **separate terminal** in the root project folder and run:
 
 ```bash
@@ -48,7 +48,7 @@ Before running browser tests, make sure these two accounts exist in your Supabas
 | RESTAURANT | restaurant@test.com      | Testpass@123   |
 | NGO        | ngo@test.com             | Testpass@123   |
 
-Register them manually via `http://localhost:3000/register` and approve them in the admin panel.
+Register them manually via `https://rescuebite-sc83.vercel.app/register` and approve them in the admin panel.
 
 ---
 
@@ -179,7 +179,7 @@ Open `report.html` in your browser to see results.
 |---|---|
 | `ModuleNotFoundError: playwright` | Run `pip install -r requirements.txt` |
 | `Browser not found` | Run `playwright install chromium` |
-| `Connection refused localhost:3000` | Start the app with `npm run dev` |
+| `Connection refused rescuebite-sc83.vercel.app` | Check your internet connection or Vercel deployment status |
 | `Invalid login credentials` in browser tests | Create test accounts in Supabase and approve them |
 | `WebDriverException: ChromeDriver not found` | webdriver-manager installs it automatically — just run again |
 | `FileNotFoundError: test_data/login_test_data.xml` | Run pytest from inside the `RescueBite_Testing_Project` folder |

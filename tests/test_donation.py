@@ -9,7 +9,7 @@ from playwright.sync_api import Page, expect
 from pages.new_donation_page import NewDonationPage
 from utils.xml_parser import xml_parser
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://rescuebite-sc83.vercel.app"
 
 
 class TestNewDonationModule:

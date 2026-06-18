@@ -5,7 +5,7 @@ conftest.py — shared Playwright fixtures for RescueBite test suite
 import pytest
 from playwright.sync_api import sync_playwright
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://rescuebite-sc83.vercel.app"
 
 # ── Credentials ────────────────────────────────────────────────────────────────
 TEST_RESTAURANT_EMAIL    = "restaurant@test.com"
