@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestData>
+    <Module name="NewDonation">
+
+        <!-- ═══ POSITIVE TEST CASES ═══════════════════════════════════════════ -->
+
+        <TestCase id="DON-001" type="positive">
+            <description>Valid cooked meals donation with all fields</description>
+            <title>Mixed Dinner Surprise Bag</title>
+            <description>A mix of rice, curries and bread from tonight's service.</description>
+            <category>COOKED_MEALS</category>
+            <quantity>5</quantity>
+            <pickupStart>2099-12-01T18:00</pickupStart>
+            <pickupEnd>2099-12-01T21:00</pickupEnd>
+            <expected>
+                <redirectUrl>/dashboard</redirectUrl>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="DON-002" type="positive">
+            <description>Valid bakery donation without description</description>
+            <title>Fresh Bread Bags</title>
+            <description></description>
+            <category>BAKERY</category>
+            <quantity>10</quantity>
+            <pickupStart>2099-12-02T07:00</pickupStart>
+            <pickupEnd>2099-12-02T10:00</pickupEnd>
+            <expected>
+                <redirectUrl>/dashboard</redirectUrl>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="DON-003" type="positive">
+            <description>Valid grocery donation with maximum quantity</description>
+            <title>Weekly Produce Bundle</title>
+            <description>Mixed vegetables and fruits.</description>
+            <category>GROCERY</category>
+            <quantity>999</quantity>
+            <pickupStart>2099-12-03T09:00</pickupStart>
+            <pickupEnd>2099-12-03T12:00</pickupEnd>
+            <expected>
+                <redirectUrl>/dashboard</redirectUrl>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <!-- ═══ NEGATIVE TEST CASES ════════════════════════════════════════════ -->
+
+        <TestCase id="DON-004" type="negative">
+            <description>Pickup end is before pickup start</description>
+            <title>Invalid Window Donation</title>
+            <description></description>
+            <category>OTHER</category>
+            <quantity>3</quantity>
+            <pickupStart>2099-12-10T18:00</pickupStart>
+            <pickupEnd>2099-12-10T16:00</pickupEnd>
+            <expected>
+                <errorExpected>true</errorExpected>
+                <errorMessage>invalid</errorMessage>
+            </expected>
+        </TestCase>
+
+        <TestCase id="DON-005" type="negative">
+            <description>Pickup end equals pickup start</description>
+            <title>Same Time Window Donation</title>
+            <description></description>
+            <category>PRODUCE</category>
+            <quantity>2</quantity>
+            <pickupStart>2099-12-10T14:00</pickupStart>
+            <pickupEnd>2099-12-10T14:00</pickupEnd>
+            <expected>
+                <errorExpected>true</errorExpected>
+                <errorMessage>invalid</errorMessage>
+            </expected>
+        </TestCase>
+
+        <!-- ═══ BOUNDARY TEST CASES ════════════════════════════════════════════ -->
+
+        <TestCase id="DON-006" type="boundary">
+            <description>Quantity of exactly 1 (minimum allowed)</description>
+            <title>Minimum Quantity Bag</title>
+            <description></description>
+            <category>BAKERY</category>
+            <quantity>1</quantity>
+            <pickupStart>2099-12-05T10:00</pickupStart>
+            <pickupEnd>2099-12-05T13:00</pickupEnd>
+            <expected>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="DON-007" type="boundary">
+            <description>Quantity of 999 (maximum allowed)</description>
+            <title>Maximum Quantity Bag</title>
+            <description></description>
+            <category>COOKED_MEALS</category>
+            <quantity>999</quantity>
+            <pickupStart>2099-12-06T15:00</pickupStart>
+            <pickupEnd>2099-12-06T18:00</pickupEnd>
+            <expected>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="DON-008" type="boundary">
+            <description>Title exactly 120 characters (maximum allowed)</description>
+            <title>ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ12345678</title>
+            <description></description>
+            <category>OTHER</category>
+            <quantity>3</quantity>
+            <pickupStart>2099-12-07T09:00</pickupStart>
+            <pickupEnd>2099-12-07T12:00</pickupEnd>
+            <expected>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+    </Module>
+</TestData>

@@ -1,0 +1,6 @@
+pytest>=8.1,<9
+playwright>=1.49
+pytest-playwright>=0.5,<1
+selenium>=4.21
+webdriver-manager>=4.0
+pytest-xdist>=3.5

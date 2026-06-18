@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestData>
+    <Module name="Registration">
+
+        <!-- ═══ POSITIVE TEST CASES ═══════════════════════════════════════════ -->
+
+        <TestCase id="REG-001" type="positive">
+            <description>Valid restaurant registration</description>
+            <role>RESTAURANT</role>
+            <name>Green Bites Cafe</name>
+            <email>greenbites_unique_001@test.com</email>
+            <password>securepass1</password>
+            <expected>
+                <redirectsFromRegister>true</redirectsFromRegister>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="REG-002" type="positive">
+            <description>Valid NGO registration</description>
+            <role>NGO</role>
+            <name>Hope Foundation</name>
+            <email>hopefound_unique_001@test.com</email>
+            <password>securepass2</password>
+            <expected>
+                <redirectsFromRegister>true</redirectsFromRegister>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <!-- ═══ NEGATIVE TEST CASES ════════════════════════════════════════════ -->
+
+        <TestCase id="REG-003" type="negative">
+            <description>Password too short (3 characters)</description>
+            <role>RESTAURANT</role>
+            <name>Short Pass Diner</name>
+            <email>shortpass@test.com</email>
+            <password>abc</password>
+            <expected>
+                <errorExpected>true</errorExpected>
+                <errorMessage>at least 6</errorMessage>
+            </expected>
+        </TestCase>
+
+        <TestCase id="REG-004" type="negative">
+            <description>Duplicate email already registered</description>
+            <role>RESTAURANT</role>
+            <name>Duplicate User</name>
+            <email>restaurant@test.com</email>
+            <password>Testpass@123</password>
+            <expected>
+                <errorExpected>true</errorExpected>
+                <errorMessage>already registered</errorMessage>
+            </expected>
+        </TestCase>
+
+        <TestCase id="REG-005" type="negative">
+            <description>Password is only spaces</description>
+            <role>NGO</role>
+            <name>Blank Pass NGO</name>
+            <email>blankpass@test.com</email>
+            <password>      </password>
+            <expected>
+                <errorExpected>true</errorExpected>
+            </expected>
+        </TestCase>
+
+        <!-- ═══ BOUNDARY TEST CASES ════════════════════════════════════════════ -->
+
+        <TestCase id="REG-006" type="boundary">
+            <description>Password exactly 6 characters (minimum)</description>
+            <role>RESTAURANT</role>
+            <name>Min Pass Diner</name>
+            <email>minpass_unique_001@test.com</email>
+            <password>abc123</password>
+            <expected>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="REG-007" type="boundary">
+            <description>Very long name (80 characters)</description>
+            <role>NGO</role>
+            <name>A Very Long Organisation Name That Goes All The Way To Eighty Characters Total!!</name>
+            <email>longname_unique_001@test.com</email>
+            <password>validpass1</password>
+            <expected>
+                <errorExpected>false</errorExpected>
+            </expected>
+        </TestCase>
+
+        <TestCase id="REG-008" type="boundary">
+            <description>Password exactly 5 characters (below minimum)</description>
+            <role>RESTAURANT</role>
+            <name>Below Min Diner</name>
+            <email>belowmin@test.com</email>
+            <password>ab123</password>
+            <expected>
+                <errorExpected>true</errorExpected>
+            </expected>
+        </TestCase>
+
+    </Module>
+</TestData>
